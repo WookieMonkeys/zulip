@@ -1,9 +1,9 @@
 import datetime
+import hashlib
 import itertools
 import logging
 import os
 import time
-import hashlib
 from collections import defaultdict
 from dataclasses import dataclass
 from operator import itemgetter
@@ -1211,7 +1211,7 @@ def do_deactivate_stream(
     # frees up the original name for reuse.
     old_name = stream.name
 
-    # Prepend a substring of the hashed stream ID to the new stream name 
+    # Prepend a substring of the hashed stream ID to the new stream name
     streamID = str(stream.id)
     stream_id_hash_object = hashlib.sha512(streamID.encode("utf-8"))
     hashed_stream_id = stream_id_hash_object.hexdigest()[0:7]
